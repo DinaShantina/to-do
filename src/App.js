@@ -47,7 +47,6 @@ function App() {
           width: "25%",
           margin: "0 auto",
           marginTop: "50px",
-          opacity: " 0.9",
         }}
       >
         {todos.map((todo, i = 0) => (
