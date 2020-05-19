@@ -36,23 +36,29 @@ function App() {
       <button disabled={!input} onClick={handleSubmit}>
         Add Todo
       </button>
-
-      <div
-        style={{
-          borderRadius: "10px",
-          backgroundColor: "transparent",
-          border: "1px solid black",
-          height: "350px",
-          overflowY: "scroll",
-          width: "25%",
-          margin: "0 auto",
-          marginTop: "50px",
-        }}
-      >
-        {todos.map((todo, i = 0) => (
-          <Todo title={todo} key={i} id={i} onDelete={(id) => deleteTodo(id)} />
-        ))}
-      </div>
+      {todos.length > 0 ? (
+        <div
+          style={{
+            borderRadius: "10px",
+            backgroundColor: "transparent",
+            border: "1px solid black",
+            height: "350px",
+            overflowY: "scroll",
+            width: "25%",
+            margin: "0 auto",
+            marginTop: "50px",
+          }}
+        >
+          {todos.map((todo, i = 0) => (
+            <Todo
+              title={todo}
+              key={i}
+              id={i}
+              onDelete={(id) => deleteTodo(id)}
+            />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
