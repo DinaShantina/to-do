@@ -1,13 +1,13 @@
 body {
   background-image: url("https://i1.wp.com/www.theandroidsoul.com/wp-content/uploads/2020/04/www.theandroidsoul.com-frozen-backgrounds-3.jpg?fit=1920%2C1080&ssl=1");
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0.6);
   background-size: cover;
   background-blend-mode: overlay;
 }
 
 h1 {
-  font-family: 'Ubuntu', sans-serif;
-  background-color: rgba(0, 0, 0, .6);
+  font-family: "Ubuntu", sans-serif;
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   opacity: 0.7;
   padding: 10px 0;
@@ -42,7 +42,7 @@ button:hover {
 
 input {
   width: 250px;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 10px 0px;
   color: white;
   margin-top: 20px;
@@ -50,7 +50,7 @@ input {
 }
 
 input:hover {
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0, 0, 0, 0.8);
   transition: ease-out;
 }
 
@@ -76,8 +76,8 @@ input:focus {
 
 .todo {
   color: white;
-  background-color: rgba(0, 0, 0, .6);
-  font-family: 'Balsamiq Sans', cursive;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-family: "Balsamiq Sans", cursive;
   height: 40px;
   border-bottom: 1px solid lightgrey;
   display: flex;
@@ -123,6 +123,17 @@ input:focus {
 ::-webkit-scrollbar-thumb {
   background-color: rgb(52, 164, 216);
   outline: 1px solid slategrey;
+}
+
+.main-todo {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid black;
+  height: 350px;
+  overflow-y: scroll;
+  width: 25%;
+  margin: 0 auto;
+  margin-top: 50px;
 }
 
 @keyframes App-logo-spin {
