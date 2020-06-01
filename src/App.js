@@ -11,20 +11,19 @@ function App() {
   // we need a list of todo's
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
-  const [id, setid] = useState(0);
 
   useEffect(() => {
     db.collection("todos").onSnapshot((snapshot) => {
-      setTodos(snapshot.docs.map((doc) => doc.data().title));
+      setTodos(
+        snapshot.docs.map((doc) => ({ id: doc.id, title: doc.data().title }))
+      );
     });
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    var id = db.collection("todos").doc().id;
     db.collection("todos").add({
       title: input,
-      id: id,
     });
 
     // setTodos([...todos, input]);
@@ -35,14 +34,16 @@ function App() {
       handleSubmit(e);
     }
   };
-  const deleteTodo = (todoIndex) => {
-    const newTodos = todos.filter((_, index) => index !== todoIndex);
-
-    // const newTodos = db.collection("todo").doc().id.delete();
-    // db.collection("todos").onSnapshot((snapshot) => {
-    //   setTodos(snapshot.docs.filter((doc) => doc.data().id !== todoIndex));
-    // });
-    setTodos(newTodos);
+  const deleteTodo = (todoId) => {
+    db.collection("todos")
+      .doc(todoId)
+      .delete()
+      .then(() => {
+        console.log("Delete: ", todoId);
+      })
+      .catch(function (error) {
+        console.error("Error removing document: ", error);
+      });
   };
 
   return (
@@ -62,10 +63,9 @@ function App() {
         <div className="main-todo">
           {todos.map((todo, i = 0) => (
             <Todo
-              title={todo}
-              key={i}
-              id={i}
-              onDelete={(id) => deleteTodo(id)}
+              title={todo.title}
+              key={todo.id}
+              onDelete={(id) => deleteTodo(todo.id)}
             />
           ))}
         </div>
